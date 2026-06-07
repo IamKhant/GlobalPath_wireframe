@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlobalPath Education — Wireframes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --blue: #1E40AF;
+    --blue-light: #DBEAFE;
+    --blue-mid: #93C5FD;
+    --dark: #0F172A;
+    --gray-900: #1E293B;
+    --gray-600: #475569;
+    --gray-400: #94A3B8;
+    --gray-200: #E2E8F0;
+    --gray-100: #F1F5F9;
+    --white: #FFFFFF;
+    --accent: #F59E0B;
+    --wire-bg: #F8FAFF;
+    --wire-box: #E8EEFF;
+    --wire-border: #93C5FD;
+    --wire-dark: #3B5BDB;
+    --wire-placeholder: #CBD5E1;
+    --wire-text: #334155;
+    --wire-label: #1E40AF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0F172A;
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  /* ── SHELL ── */
+  .shell {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: #0A0F1E;
+    border-right: 1px solid rgba(147,197,253,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .sidebar-brand {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid rgba(147,197,253,0.1);
+  }
+
+  .brand-mark {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--blue-mid);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .brand-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .sidebar-section {
+    padding: 12px 20px 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  .page-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    color: var(--gray-400);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.18s;
+    border-left: 2px solid transparent;
+  }
+
+  .page-btn:hover { background: rgba(147,197,253,0.06); color: #BDD7FF; }
+  .page-btn.active { background: rgba(30,64,175,0.18); color: white; border-left-color: var(--blue-mid); }
+
+  .page-btn .badge {
+    margin-left: auto;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background: rgba(147,197,253,0.12);
+    color: var(--blue-mid);
+    font-family: 'Space Mono', monospace;
+  }
+
+  .page-btn .badge.auth { background: rgba(245,158,11,0.15); color: #FCD34D; }
+
+  .page-num {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: rgba(147,197,253,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-family: 'Space Mono', monospace;
+    color: var(--blue-mid);
+    flex-shrink: 0;
+  }
+  .page-btn.active .page-num {
+    background: var(--blue);
+    color: white;
+  }
+
+  /* ── MAIN AREA ── */
+  .main {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: #0A0F1E;
+    border-bottom: 1px solid rgba(147,197,253,0.12);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .topbar-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .topbar-route {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--blue-mid);
+    background: rgba(30,64,175,0.15);
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(147,197,253,0.2);
+  }
+
+  .topbar-auth {
+    margin-left: auto;
+    font-size: 11px;
+    color: #FCD34D;
+    background: rgba(245,158,11,0.1);
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(245,158,11,0.2);
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* ── CANVAS ── */
+  .canvas-wrap {
+    flex: 1;
+    overflow: auto;
+    background: #111827;
+    padding: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  /* ── WIREFRAME DEVICE FRAME ── */
+  .device-frame {
+    width: 860px;
+    min-height: 600px;
+    background: var(--wire-bg);
+    border-radius: 8px;
+    border: 2px solid rgba(147,197,253,0.3);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.3), 0 40px 80px rgba(0,0,0,0.5);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* ── WIREFRAME STYLES ── */
+  .wf-nav {
+    height: 52px;
+    background: var(--wire-dark);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 24px;
+  }
+
+  .wf-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.08em;
+  }
+
+  .wf-navlinks {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .wf-navlink {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .wf-navlink.active {
+    background: rgba(255,255,255,0.15);
+    color: white;
+  }
+
+  .wf-nav-auth {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .wf-btn-ghost {
+    padding: 5px 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.8);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .wf-btn-solid {
+    padding: 5px 12px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    font-size: 10px;
+    color: white;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .wf-section {
+    padding: 28px 32px;
+  }
+
+  .wf-section + .wf-section {
+    border-top: 1px solid var(--gray-200);
+  }
+
+  /* boxes / placeholders */
+  .wf-box {
+    background: var(--wire-box);
+    border: 1.5px dashed var(--wire-border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wire-label);
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+    padding: 8px;
+    line-height: 1.5;
+  }
+
+  .wf-img { background: var(--wire-placeholder); border: 1.5px solid var(--wire-border); border-radius: 6px; }
+
+  .wf-label {
+    font-size: 9px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--wire-label);
+    margin-bottom: 6px;
+  }
+
+  .wf-hero {
+    background: var(--wire-dark);
+    padding: 48px 32px 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .wf-h1 { font-size: 26px; font-weight: 700; color: white; margin-bottom: 8px; }
+  .wf-h2 { font-size: 18px; font-weight: 600; color: var(--wire-text); margin-bottom: 12px; }
+  .wf-h3 { font-size: 13px; font-weight: 600; color: var(--wire-text); margin-bottom: 6px; }
+  .wf-p { font-size: 11px; color: var(--gray-600); line-height: 1.6; }
+  .wf-sub { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 24px; }
+
+  .wf-searchbar {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1.5px solid var(--wire-border);
+  }
+
+  .wf-searchbar input {
+    flex: 1;
+    border: none;
+    padding: 10px 14px;
+    font-size: 12px;
+    outline: none;
+    background: transparent;
+    color: var(--wire-text);
+  }
+
+  .wf-searchbar-btn {
+    padding: 10px 20px;
+    background: var(--wire-dark);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    border: none;
+  }
+
+  .wf-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--wire-box);
+    border-top: 1.5px solid var(--wire-border);
+  }
+
+  .wf-stat {
+    padding: 16px;
+    text-align: center;
+    border-right: 1px dashed var(--wire-border);
+  }
+  .wf-stat:last-child { border-right: none; }
+  .wf-stat-n { font-size: 22px; font-weight: 700; color: var(--wire-dark); }
+  .wf-stat-l { font-size: 10px; color: var(--gray-600); }
+
+  .wf-grid { display: grid; gap: 16px; }
+  .wf-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .wf-grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .wf-card {
+    background: white;
+    border: 1.5px solid var(--wire-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .wf-card-img { height: 64px; }
+  .wf-card-body { padding: 12px; }
+  .wf-card-tag {
+    display: inline-block;
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    background: var(--wire-box);
+    color: var(--wire-label);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 6px;
+  }
+  .wf-card-actions {
+    display: flex;
+    gap: 6px;
+    padding: 10px 12px;
+    border-top: 1px dashed var(--wire-border);
+    background: var(--wire-box);
+  }
+  .wf-card-action {
+    flex: 1;
+    height: 24px;
+    border-radius: 4px;
+    background: var(--wire-placeholder);
+    font-size: 9px;
+    font-family: 'Space Mono', monospace;
+    color: var(--wire-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wf-sidebar-filter {
+    background: white;
+    border: 1.5px solid var(--wire-border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .wf-input {
+    width: 100%;
+    height: 32px;
+    border: 1.5px solid var(--wire-border);
+    border-radius: 5px;
+    background: var(--wire-box);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 10px;
+    color: var(--gray-400);
+  }
+
+  .wf-check-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 7px;
+  }
+  .wf-check {
+    width: 13px;
+    height: 13px;
+    border: 1.5px solid var(--wire-border);
+    border-radius: 2px;
+    background: var(--wire-box);
+    flex-shrink: 0;
+  }
+  .wf-check-label { font-size: 11px; color: var(--wire-text); }
+
+  .wf-range {
+    width: 100%;
+    height: 4px;
+    background: var(--wire-border);
+    border-radius: 2px;
+    margin: 8px 0 12px;
+    position: relative;
+  }
+  .wf-range::after {
+    content: '';
+    position: absolute;
+    left: 15%;
+    width: 55%;
+    height: 4px;
+    background: var(--wire-dark);
+    border-radius: 2px;
+  }
+
+  .wf-footer {
+    background: var(--wire-dark);
+    padding: 20px 32px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .wf-footer-col-title { font-size: 10px; font-weight: 700; color: white; margin-bottom: 8px; }
+  .wf-footer-link { height: 10px; background: rgba(255,255,255,0.2); border-radius: 2px; margin-bottom: 6px; }
+
+  .wf-badge-auth {
+    font-size: 9px;
+    font-family: 'Space Mono', monospace;
+    background: rgba(245,158,11,0.15);
+    color: #B45309;
+    padding: 2px 7px;
+    border-radius: 10px;
+    border: 1px solid #FDE68A;
+    margin-left: 8px;
+  }
+
+  .wf-compare-bar {
+    position: relative;
+    background: var(--wire-dark);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .wf-compare-mini {
+    width: 100px;
+    height: 36px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Space Mono', monospace;
+  }
+  .wf-compare-btn {
+    margin-left: auto;
+    padding: 8px 20px;
+    background: white;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--wire-dark);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .wf-detail-two-col {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 24px;
+    padding: 24px 32px;
+  }
+
+  .wf-detail-sticky {
+    background: white;
+    border: 1.5px solid var(--wire-border);
+    border-radius: 8px;
+    padding: 16px;
+    align-self: start;
+  }
+
+  .wf-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  .wf-compare-table th {
+    background: var(--wire-dark);
+    color: white;
+    font-size: 11px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-weight: 600;
+  }
+  .wf-compare-table td {
+    padding: 10px 14px;
+    font-size: 11px;
+    border: 1px solid var(--wire-border);
+    color: var(--wire-text);
+    background: white;
+  }
+  .wf-compare-table tr:nth-child(even) td { background: var(--wire-box); }
+  .wf-compare-table .attr { font-weight: 600; color: var(--wire-label); background: var(--wire-box) !important; width: 120px; }
+
+  .wf-form-row { margin-bottom: 14px; }
+  .wf-form-label { font-size: 11px; font-weight: 600; color: var(--wire-text); margin-bottom: 5px; }
+  .wf-form-input {
+    width: 100%;
+    height: 36px;
+    border: 1.5px solid var(--wire-border);
+    border-radius: 5px;
+    background: white;
+    padding: 0 12px;
+    font-size: 11px;
+    color: var(--gray-400);
+    display: flex;
+    align-items: center;
+  }
+  .wf-form-textarea {
+    width: 100%;
+    height: 72px;
+    border: 1.5px solid var(--wire-border);
+    border-radius: 5px;
+    background: white;
+  }
+  .wf-submit {
+    width: 100%;
+    height: 40px;
+    background: var(--wire-dark);
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wf-dash-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .wf-dash-stat {
+    background: white;
+    border: 1.5px solid var(--wire-border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .wf-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--wire-border);
+    margin-bottom: 16px;
+    gap: 4px;
+  }
+  .wf-tab {
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-400);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+  }
+  .wf-tab.active { color: var(--wire-dark); border-bottom-color: var(--wire-dark); }
+
+  .wf-auth-card {
+    max-width: 360px;
+    margin: 32px auto;
+    background: white;
+    border: 1.5px solid var(--wire-border);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(30,64,175,0.1);
+  }
+
+  .wf-divider {
+    border: none;
+    border-top: 1.5px dashed var(--wire-border);
+    margin: 16px 0;
+  }
+
+  .wf-annotation {
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 10px;
+    color: #92400E;
+    font-family: 'Space Mono', monospace;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 6px;
+    max-width: 100%;
+  }
+
+  .wf-col-2 { display: flex; gap: 20px; }
+  .wf-col-sidebar { width: 220px; flex-shrink: 0; }
+  .wf-col-main { flex: 1; min-width: 0; }
+
+  /* annotation arrows */
+  .ann-wrap { position: relative; }
+  .ann-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #EFF6FF;
+    border: 1px solid var(--wire-border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 9px;
+    font-family: 'Space Mono', monospace;
+    color: var(--wire-label);
+    margin: 4px 3px;
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">Wireframes</div>
+      <div class="brand-title">GlobalPath Education</div>
+    </div>
+    <div class="sidebar-section">Pages</div>
+
+    <button class="page-btn active" onclick="showPage(0,this)">
+      <span class="page-num">1</span> Home
+      <span class="badge">/</span>
+    </button>
+    <button class="page-btn" onclick="showPage(1,this)">
+      <span class="page-num">2</span> Programs
+      <span class="badge">/programs</span>
+    </button>
+    <button class="page-btn" onclick="showPage(2,this)">
+      <span class="page-num">3</span> Detail
+      <span class="badge">/programs/:id</span>
+    </button>
+    <button class="page-btn" onclick="showPage(3,this)">
+      <span class="page-num">4</span> Compare
+      <span class="badge">/compare</span>
+    </button>
+    <button class="page-btn" onclick="showPage(4,this)">
+      <span class="page-num">5</span> Bookmarks
+      <span class="badge auth">AUTH</span>
+    </button>
+    <button class="page-btn" onclick="showPage(5,this)">
+      <span class="page-num">6</span> Consultation
+      <span class="badge">/consult</span>
+    </button>
+    <button class="page-btn" onclick="showPage(6,this)">
+      <span class="page-num">7</span> Dashboard
+      <span class="badge auth">AUTH</span>
+    </button>
+    <button class="page-btn" onclick="showPage(7,this)">
+      <span class="page-num">8</span> Sign In / Up
+      <span class="badge">/sign-in</span>
+    </button>
+
+    <div class="sidebar-section" style="margin-top:auto; padding-top: 20px;">Legend</div>
+    <div style="padding: 8px 20px 20px; display:flex; flex-direction:column; gap:8px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gray-400);">
+        <div style="width:14px;height:14px;border-radius:2px;background:#E8EEFF;border:1.5px dashed #93C5FD;flex-shrink:0;"></div>
+        Content placeholder
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gray-400);">
+        <div style="width:14px;height:14px;border-radius:2px;background:#CBD5E1;flex-shrink:0;"></div>
+        Image placeholder
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--gray-400);">
+        <div style="width:14px;height:14px;border-radius:2px;background:#FFFBEB;border:1px solid #FDE68A;flex-shrink:0;"></div>
+        Annotation
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="main">
+    <!-- TOP BAR -->
+    <div class="topbar" id="topbar">
+      <div class="topbar-title" id="tb-title">Home Page</div>
+      <div class="topbar-route" id="tb-route">/</div>
+    </div>
+
+    <!-- CANVAS -->
+    <div class="canvas-wrap">
+      <div class="device-frame" id="wf-frame">
+        <!-- content injected by JS -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const pages = [
+  // ── 0: HOME ──────────────────────────────────────────────────────────────
+  {
+    title: 'Home Page',
+    route: '/',
+    auth: false,
+    html: `
+      <div class="wf-nav">
+        <span class="wf-logo">GLOBALPATH</span>
+        <div class="wf-navlinks">
+          <span class="wf-navlink active">Home</span>
+          <span class="wf-navlink">Programs</span>
+          <span class="wf-navlink">Compare</span>
+          <span class="wf-navlink">Consultation</span>
+        </div>
+        <div class="wf-nav-auth">
+          <span class="wf-btn-ghost">Sign In</span>
+          <span class="wf-btn-solid">Sign Up</span>
+        </div>
+      </div>
+
+      <!-- HERO -->
+      <div class="wf-hero">
+        <div class="wf-h1">Explore IT Programs Worldwide</div>
+        <div class="wf-sub">59 programs across 9 countries — Bachelor, Diploma, Master and Bootcamp pathways</div>
+        <div class="wf-searchbar">
+          <input type="text" placeholder="Search by university, country, or keyword…" readonly>
+          <div class="wf-searchbar-btn">Search</div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+          <span class="ann-chip">🇦🇺 Australia</span>
+          <span class="ann-chip">🇨🇦 Canada</span>
+          <span class="ann-chip">🇩🇪 Germany</span>
+          <span class="ann-chip">🇮🇪 Ireland</span>
+          <span class="ann-chip">🇯🇵 Japan</span>
+          <span class="ann-chip">+3 more</span>
+        </div>
+      </div>
+
+      <!-- STATS BAR -->
+      <div class="wf-stats">
+        <div class="wf-stat"><div class="wf-stat-n">59</div><div class="wf-stat-l">Programs</div></div>
+        <div class="wf-stat"><div class="wf-stat-n">9</div><div class="wf-stat-l">Countries</div></div>
+        <div class="wf-stat"><div class="wf-stat-n">4</div><div class="wf-stat-l">Types</div></div>
+        <div class="wf-stat"><div class="wf-stat-n">Free</div><div class="wf-stat-l">To Compare</div></div>
+      </div>
+
+      <!-- FEATURED SECTION -->
+      <div class="wf-section">
+        <div class="wf-label" style="margin-bottom:14px;">Featured Programs — 3-column grid</div>
+        <div class="wf-grid wf-grid-3">
+          ${[1,2,3].map(i => `
+          <div class="wf-card">
+            <div class="wf-card-img wf-img"></div>
+            <div class="wf-card-body">
+              <span class="wf-card-tag">Masters</span>
+              <div class="wf-h3">Program Name ${i}</div>
+              <div class="wf-p">University Name · 🇦🇺 Australia</div>
+              <div class="wf-p" style="margin-top:4px;font-weight:600;color:var(--wire-dark);">AUD 45,000 / yr</div>
+            </div>
+            <div class="wf-card-actions">
+              <div class="wf-card-action">♡ Save</div>
+              <div class="wf-card-action">⊕ Compare</div>
+              <div class="wf-card-action">→ View</div>
+            </div>
+          </div>`).join('')}
+        </div>
+        <div style="text-align:center;margin-top:20px;">
+          <div style="display:inline-block;padding:9px 28px;background:var(--wire-dark);color:white;border-radius:6px;font-size:12px;font-weight:700;">Browse All Programs →</div>
+        </div>
+      </div>
+
+      <!-- CTA BANNER -->
+      <div style="background:var(--wire-box);border-top:1.5px dashed var(--wire-border);padding:28px 32px;text-align:center;">
+        <div class="wf-h2" style="margin-bottom:6px;">Not sure where to start?</div>
+        <div class="wf-p" style="margin-bottom:16px;">Book a free 30-minute consultation with our education advisors.</div>
+        <div style="display:inline-block;padding:9px 28px;background:var(--wire-dark);color:white;border-radius:6px;font-size:12px;font-weight:700;">Book Consultation</div>
+      </div>
+
+      <div class="wf-footer">
+        <div><div class="wf-footer-col-title">GLOBALPATH EDUCATION</div>
+          <div class="wf-p" style="color:rgba(255,255,255,0.5);font-size:10px;">Helping students find the right IT programme worldwide.</div>
+        </div>
+        ${['Programs','Company','Support'].map(t=>`<div><div class="wf-footer-col-title">${t}</div>${[1,2,3].map(()=>'<div class="wf-footer-link"></div>').join('')}</div>`).join('')}
+      </div>
+    `
+  },
+
+  // ── 1: PROGRAMS ──────────────────────────────────────────────────────────
+  {
+    title: 'Program Listing',
+    route: '/programs',
+    auth: false,
+    html: `
+      <div class="wf-nav">
+        <span class="wf-logo">GLOBALPATH</span>
+        <div class="wf-navlinks">
+          <span class="wf-navlink">Home</span>
+          <span class="wf-navlink active">Programs</span>
+          <span class="wf-navlink">Compare</span>
+          <span class="wf-navlink">Consultation</span>
+        </div>
+        <div class="wf-nav-auth">
+          <span class="wf-btn-ghost">Sign In</span>
+          <span class="wf-btn-solid">Sign Up</span>
+        </div>
+      </div>
+
+      <div style="background:var(--wire-box);border-bottom:1.5px dashed var(--wire-border);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:12px;color:var(--wire-text);">Showing <strong>59</strong> programs</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px;color:var(--gray-600);">
+          Sort by: <div style="padding:4px 12px;border:1.5px solid var(--wire-border);border-radius:4px;background:white;font-size:11px;">Relevance ▾</div>
+        </div>
+      </div>
+
+      <div class="wf-col-2" style="padding:20px 20px 0;">
+        <!-- SIDEBAR -->
+        <div class="wf-col-sidebar">
+          <div class="wf-sidebar-filter">
+            <div class="wf-label" style="margin-bottom:10px;">Filters</div>
+            <div class="wf-input">🔍  Search programmes…</div>
+
+            <div class="wf-label">Country</div>
+            ${['Australia','Canada','Germany','Ireland','Japan'].map(c=>`
+              <div class="wf-check-row"><div class="wf-check"></div><span class="wf-check-label">${c}</span></div>
+            `).join('')}
+            <div class="wf-annotation">+ 4 more countries</div>
+
+            <hr class="wf-divider">
+            <div class="wf-label">Program Type</div>
+            <div class="wf-check-row"><div class="wf-check" style="border-radius:50%;background:var(--wire-dark);border-color:var(--wire-dark);"></div><span class="wf-check-label">All Types</span></div>
+            <div class="wf-check-row"><div class="wf-check" style="border-radius:50%;"></div><span class="wf-check-label">Masters</span></div>
+            <div class="wf-check-row"><div class="wf-check" style="border-radius:50%;"></div><span class="wf-check-label">Bootcamp</span></div>
+
+            <hr class="wf-divider">
+            <div class="wf-label">Max Tuition (AUD)</div>
+            <div class="wf-range"></div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--gray-600);">
+              <span>$0</span><span>$120,000</span>
+            </div>
+
+            <hr class="wf-divider">
+            <div class="wf-label">Duration</div>
+            ${['Any','6 months','1 year','2 years'].map(d=>`
+              <div class="wf-check-row"><div class="wf-check" style="border-radius:50%;"></div><span class="wf-check-label">${d}</span></div>
+            `).join('')}
+          </div>
+          <div class="wf-annotation" style="margin-top:8px;">Filters collapse to off-canvas on mobile (&lt;768px)</div>
+        </div>
+
+        <!-- CARD GRID -->
+        <div class="wf-col-main">
+          <div class="wf-grid wf-grid-2" style="margin-bottom:16px;">
+            ${[1,2,3,4,5,6].map(i=>`
+            <div class="wf-card">
+              <div class="wf-card-img wf-img"></div>
+              <div class="wf-card-body">
+                <span class="wf-card-tag">${i%2===0?'Bootcamp':'Masters'}</span>
+                <div class="wf-h3">Program Name ${i}</div>
+                <div class="wf-p">University · 🇦🇺 Australia · 2 years</div>
+                <div class="wf-p" style="margin-top:4px;font-weight:600;color:var(--wire-dark);">AUD 38,000 / yr</div>
+              </div>
+              <div class="wf-card-actions">
+                <div class="wf-card-action">♡</div>
+                <div class="wf-card-action">⊕</div>
+                <div class="wf-card-action" style="flex:3;">View Detail →</div>
+              </div>
+            </div>`).join('')}
+          </div>
+          <!-- PAGINATION -->
+          <div style="display:flex;justify-content:center;gap:6px;padding-bottom:20px;">
+            ${['‹','1','2','3','4','5','›'].map((p,i)=>`
+              <div style="width:28px;height:28px;border-radius:5px;border:1.5px solid var(--wire-border);background:${i===1?'var(--wire-dark)':'white'};color:${i===1?'white':'var(--wire-text)'};display:flex;align-items:center;justify-content:center;font-size:11px;">${p}</div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARE BAR -->
+      <div class="wf-compare-bar">
+        <div style="font-size:10px;font-family:'Space Mono',monospace;color:rgba(255,255,255,0.6);margin-right:4px;">COMPARE (2/3)</div>
+        <div class="wf-compare-mini">Program A</div>
+        <div class="wf-compare-mini">Program B</div>
+        <div class="wf-compare-mini" style="border-style:dashed;opacity:0.5;">+ Add</div>
+        <div class="wf-compare-btn">View Comparison →</div>
+      </div>
+    `
+  },
+
+  // ── 2: DETAIL ────────────────────────────────────────────────────────────
+  {
+    title: 'Program Detail',
+    route: '/programs/:id',
+    auth: false,
+    html: `
+      <div class="wf-nav">
+        <span class="wf-logo">GLOBALPATH</span>
+        <div class="wf-navlinks">
+          <span class="wf-navlink">Home</span>
+          <span class="wf-navlink active">Programs</span>
+          <span class="wf-navlink">Compare</span>
+          <span class="wf-navlink">Consultation</span>
+        </div>
+        <div class="wf-nav-auth"><span class="wf-btn-ghost">Sign In</span><span class="wf-btn-solid">Sign Up</span></div>
+      </div>
+
+      <!-- BREADCRUMB -->
+      <div style="background:var(--wire-box);padding:10px 32px;font-size:11px;color:var(--gray-600);border-bottom:1px dashed var(--wire-border);">
+        Home &rsaquo; Programs &rsaquo; <strong>Master of IT — University of Melbourne</strong>
+      </div>
+
+      <div class="wf-detail-two-col">
+        <!-- LEFT: Program Info -->
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <div class="wf-img" style="width:56px;height:56px;border-radius:8px;flex-shrink:0;"></div>
+            <div>
+              <span class="wf-card-tag" style="margin-bottom:4px;">Masters</span>
+              <div class="wf-h2" style="margin:0;">Master of Information Technology</div>
+              <div class="wf-p">University of Melbourne &nbsp;·&nbsp; 🇦🇺 Australia</div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;">
+            ${[['Duration','2 years'],['Intake','Feb / Jul'],['Study Mode','On-campus']].map(([l,v])=>`
+            <div style="background:var(--wire-box);border:1.5px solid var(--wire-border);border-radius:6px;padding:12px;text-align:center;">
+              <div style="font-size:9px;font-family:'Space Mono',monospace;color:var(--wire-label);margin-bottom:4px;">${l.toUpperCase()}</div>
+              <div style="font-size:13px;font-weight:700;color:var(--wire-dark);">${v}</div>
+            </div>`).join('')}
+          </div>
+
+          <div class="wf-label" style="margin-bottom:8px;">Program Overview</div>
+          ${[80,100,60,90,70].map(w=>`<div style="height:10px;background:var(--wire-placeholder);border-radius:2px;width:${w}%;margin-bottom:6px;"></div>`).join('')}
+          <div style="height:10px;background:var(--wire-placeholder);border-radius:2px;width:40%;margin-bottom:16px;"></div>
+
+          <div class="wf-label" style="margin-bottom:8px;">Requirements</div>
+          ${['Bachelor degree in IT or related field','IELTS 6.5+ / TOEFL 79+','Academic transcripts'].map(r=>`
+          <div class="wf-check-row"><div class="wf-check" style="background:var(--wire-dark);border-color:var(--wire-dark);"></div><span class="wf-check-label">${r}</span></div>
+          `).join('')}
+        </div>
+
+        <!-- RIGHT: Action Card -->
+        <div class="wf-detail-sticky">
+          <div style="font-size:22px;font-weight:700;color:var(--wire-dark);margin-bottom:4px;">AUD 45,000</div>
+          <div style="font-size:10px;color:var(--gray-600);margin-bottom:12px;">per year</div>
+          <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
+            <span class="ann-chip">AUD</span><span class="ann-chip">USD</span><span class="ann-chip">EUR</span><span class="ann-chip">GBP</span>
+          </div>
+          <div class="wf-annotation" style="margin-bottom:12px;">Currency toggle via Frankfurter API</div>
+          ${[['⊕ Add to Compare','var(--wire-box)','var(--wire-text)'],['♡ Bookmark','var(--wire-box)','var(--wire-text)'],['Book Consultation','var(--wire-dark)','white']].map(([t,bg,c])=>`
+          <div style="width:100%;margin-bottom:8px;padding:10px;background:${bg};border:1.5px solid var(--wire-border);border-radius:6px;font-size:12px;font-weight:600;color:${c};text-align:center;">${t}</div>
+          `).join('')}
+          <hr class="wf-divider">
+          <div class="wf-label">Application Deadline</div>
+          <div style="font-size:13px;font-weight:600;color:var(--wire-dark);">31 October 2025</div>
+        </div>
+      </div>
+
+      <!-- COMPARE BAR -->
+      <div class="wf-compare-bar" style="border-top:1px solid rgba(255,255,255,0.1);">
+        <div style="font-size:10px;font-family:'Space Mono',monospace;color:rgba(255,255,255,0.6);margin-right:4px;">COMPARE (1/3)</div>
+        <div class="wf-compare-mini">Master of IT</div>
+        <div class="wf-compare-mini" style="border-style:dashed;opacity:0.5;">+ Add</div>
+        <div class="wf-compare-mini" style="border-style:dashed;opacity:0.5;">+ Add</div>
+        <div class="wf-compare-btn">View Comparison →</div>
+      </div>
+    `
+  },
+
+  // ── 3: COMPARE ───────────────────────────────────────────────────────────
+  {
+    title: 'Compare Programs',
+    route: '/compare',
+    auth: false,
+    html: `
+      <div class="wf-nav">
+        <span class="wf-logo">GLOBALPATH</span>
+        <div class="wf-navlinks">
+          <span class="wf-navlink">Home</span><span class="wf-navlink">Programs</span>
+          <span class="wf-navlink active">Compare</span><span class="wf-navlink">Consultation</span>
+        </div>
+        <div class="wf-nav-auth"><span class="wf-btn-ghost">Sign In</span><span class="wf-btn-solid">Sign Up</span></div>
+      </div>
+
+      <div class="wf-section">
+        <div class="wf-h2" style="margin-bottom:4px;">Compare Programs</div>
+        <div class="wf-p" style="margin-bottom:20px;">Side-by-side comparison of up to 3 programs</div>
+
+        <div style="overflow-x:auto;">
+          <table class="wf-compare-table" style="min-width:560px;">
+            <thead>
+              <tr>
+                <th style="width:120px;background:#0A0F1E;">Attribute</th>
+                <th>Master of IT<br><span style="font-size:9px;opacity:0.7;font-weight:400;">U. Melbourne</span></th>
+                <th>CS Bootcamp<br><span style="font-size:9px;opacity:0.7;font-weight:400;">General Assembly</span></th>
+                <th>MSc. Data Sci.<br><span style="font-size:9px;opacity:0.7;font-weight:400;">TU Munich</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${[
+                ['Country','🇦🇺 Australia','🇦🇺 Australia','🇩🇪 Germany'],
+                ['Type','Masters','Bootcamp','Masters'],
+                ['Duration','2 years','6 months','2 years'],
+                ['Tuition','AUD 45,000/yr','AUD 15,000','EUR 0 (free)'],
+                ['Intake','Feb / Jul','Rolling','Oct'],
+                ['Mode','On-campus','Online / Hybrid','On-campus'],
+              ].map(([attr,...vals])=>`
+              <tr>
+                <td class="attr">${attr}</td>
+                ${vals.map(v=>`<td>${v}</td>`).join('')}
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+        <div class="wf-annotation" style="margin-top:10px;">Table wraps horizontally on mobile with overflow-x:auto</div>
+
+        <div style="display:flex;gap:12px;margin-top:20px;justify-content:flex-end;">
+          <div style="padding:9px 20px;border:1.5px solid var(--wire-border);border-radius:6px;font-size:12px;color:var(--wire-text);">Clear All</div>
+          <div style="padding:9px 20px;background:var(--wire-dark);border-radius:6px;font-size:12px;color:white;font-weight:700;">Book Consultation</div>
+        </div>
+      </div>
+    `
+  },
+
+  // ── 4: BOOKMARKS ─────────────────────────────────────────────────────────
+  {
+    title: 'Saved Programs (Bookmarks)',
+    route: '/bookmarks',
+    auth: true,
+    html: `
+      <div class="wf-nav">
+        <span class="wf-logo">GLOBALPATH</span>
+        <div class="wf-navlinks">
+          <span class="wf-navlink">Home</span><span class="wf-navlink">Programs</span>
+          <span class="wf-navlink">Compare</span><span class="wf-navlink">Consultation</span>
+        </div>
+        <div class="wf-nav-auth">
+          <div class="wf-img" style="width:28px;height:28px;border-radius:50%;"></div>
+          <span class="wf-btn-solid">Dashboard</span>
+        </div>
+      </div>
+
+      <div class="wf-section" style="border-bottom:1.5px dashed var(--wire-border);">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="wf-h2" style="margin:0;">My Saved Programs</div>
+          <span style="background:var(--wire-dark);color:white;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700;">4</span>
+        </div>
+        <div class="wf-p" style="margin-top:4px;">Programs you have bookmarked for later review.</div>
+      </div>
+
+      <div class="wf-section">
+        <div class="wf-grid wf-grid-3">
+          ${[1,2,3,4].map(i=>`
+          <div class="wf-card">
+            <div class="wf-card-img wf-img"></div>
+            <div class="wf-card-body">
+              <span class="wf-card-tag">Masters</span>
+              <div class="wf-h3">Saved Program ${i}</div>
+              <div class="wf-p">University · 🇦🇺 Australia</div>
+              <div class="wf-p" style="font-weight:600;color:var(--wire-dark);margin-top:4px;">AUD 38,000 / yr</div>
+            </div>
+            <div class="wf-card-actions">
+              <div class="wf-card-action">♥ Saved</div>
+              <div class="wf-card-action">⊕ Compare</div>
+              <div class="wf-card-action">→ View</div>
+            </div>
+          </div>`).join('')}
+        </div>
+
+        <!-- EMPTY STATE (shown when no bookmarks) -->
+        <div style="background:var(--wire-box);border:1.5px dashed var(--wire-border);border-radius:8px;padding:32px;text-align:center;margin-top:24px;">
+          <div style="font-size:28px;margin-bottom:8px;">♡</div>
+          <div class="wf-h3" style="margin-bottom:6px;">No bookmarks yet</div>
+          <div class="wf-p" style="margin-bottom:16px;">Save programmes to compare them later.</div>
+          <div style="display:inline-block;padding:9px 24px;background:var(--wire-dark);color:white;border-radius:6px;font-size:12px;font-weight:700;">Browse Programs</div>
+        </div>
+        <div class="wf-annotation">Empty state shown to first-time users</div>
+      </div>
+    `
+  },
+
+  // ── 5: CONSULT ───────────────────────────────────────────────────────────
+  {
+    title: 'Consultation Booking',
+    route: '/consult',
+    auth: false,
+    html: `
+      <div class="wf-nav">
+        <span class="wf-logo">GLOBALPATH</span>
+        <div class="wf-navlinks">
+          <span class="wf-navlink">Home</span><span class="wf-navlink">Programs</span>
+          <span class="wf-navlink">Compare</span><span class="wf-navlink active">Consultation</span>
+        </div>
+        <div class="wf-nav-auth"><span class="wf-btn-ghost">Sign In</span><span class="wf-btn-solid">Sign Up</span></div>
+      </div>
+
+      <div style="max-width:560px;margin:0 auto;padding:28px 24px;">
+        <div class="wf-h2" style="margin-bottom:4px;">Book a Free Consultation</div>
+        <div class="wf-p" style="margin-bottom:8px;">Talk to one of our education advisors — 30 minutes, no obligation.</div>
+        <div class="wf-annotation" style="margin-bottom:20px;">* Required fields are marked with an asterisk</div>
+
+        <div class="wf-grid wf-grid-2" style="margin-bottom:14px;">
+          <div class="wf-form-row">
+            <div class="wf-form-label">Full Name *</div>
+            <div class="wf-form-input">Your full name</div>
+          </div>
+          <div class="wf-form-row">
+            <div class="wf-form-label">Email Address *</div>
+            <div class="wf-form-input">your@email.com</div>
+          </div>
+        </div>
+
+        <div class="wf-grid wf-grid-2" style="margin-bottom:14px;">
+          <div class="wf-form-row">
+            <div class="wf-form-label">Preferred Date *</div>
+            <div class="wf-form-input">📅  DD/MM/YYYY</div>
+          </div>
+          <div class="wf-form-row">
+            <div class="wf-form-label">Preferred Time *</div>
+            <div class="wf-form-input">🕐  HH:MM</div>
+          </div>
+        </div>
+
+        <div class="wf-form-row">
+          <div class="wf-form-label">Program of Interest</div>
+          <div class="wf-form-input" style="position:relative;">
+            <span style="flex:1;color:var(--gray-400);">Select a programme…</span>
+            <span>▾</span>
+          </div>
+          <div class="wf-annotation" style="margin-top:6px;">Grouped by country using &lt;optgroup&gt;</div>
+        </div>
+
+        <div class="wf-form-row">
+          <div class="wf-form-label">Message / Questions</div>
+          <div class="wf-form-textarea"></div>
+        </div>
+
+        <div class="wf-submit">Book Consultation</div>
+
+        <!-- SUCCESS STATE -->
+        <div style="background:#ECFDF5;border:1.5px solid #6EE7B7;border-radius:6px;padding:14px 16px;margin-top:16px;display:flex;align-items:flex-start;gap:10px;">
+          <span style="color:#059669;font-size:16px;">✓</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#065F46;margin-bottom:2px;">Consultation booked!</div>
+            <div style="font-size:11px;color:#047857;">Ref: CONS-2025-0042 — We'll email a confirmation within 24 hours.</div>
+          </div>
+        </div>
+        <div class="wf-annotation" style="margin-top:6px;">Success state — dismissible, shows reference number</div>
+      </div>
+    `
+  },
+
+  // ── 6: DASHBOARD ─────────────────────────────────────────────────────────
+  {
+    title: 'User Dashboard',
+    route: '/dashboard',
+    auth: true,
+    html: `
+      <div class="wf-nav">
+        <span class="wf-logo">GLOBALPATH</span>
+        <div class="wf-navlinks">
+          <span class="wf-navlink">Home</span><span class="wf-navlink">Programs</span>
+          <span class="wf-navlink">Compare</span><span class="wf-navlink">Consultation</span>
+        </div>
+        <div class="wf-nav-auth">
+          <div class="wf-img" style="width:28px;height:28px;border-radius:50%;"></div>
+          <span class="wf-btn-solid" style="background:rgba(255,255,255,0.15);">[Your Name] ▾</span>
+        </div>
+      </div>
+
+      <div class="wf-section" style="border-bottom:1.5px dashed var(--wire-border);">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div class="wf-img" style="width:48px;height:48px;border-radius:50%;"></div>
+          <div>
+            <div class="wf-h2" style="margin:0;">Welcome back, [Your Name]</div>
+            <div class="wf-p">Member since January 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wf-section">
+        <div class="wf-dash-stats">
+          ${[['♡','4','Bookmarks'],['📋','2','Consultations'],['📅','Jan 2025','Member Since']].map(([ic,n,l])=>`
+          <div class="wf-dash-stat">
+            <div style="font-size:20px;margin-bottom:4px;">${ic}</div>
+            <div class="wf-stat-n">${n}</div>
+            <div class="wf-stat-l">${l}</div>
+          </div>`).join('')}
+        </div>
+
+        <div class="wf-tabs">
+          <div class="wf-tab active">Bookmarked Programs</div>
+          <div class="wf-tab">Consultation History</div>
+        </div>
+
+        <!-- TAB 1: Bookmarks mini-grid -->
+        <div class="wf-grid wf-grid-3" style="margin-bottom:16px;">
+          ${[1,2,3].map(i=>`
+          <div class="wf-card">
+            <div class="wf-card-img wf-img"></div>
+            <div class="wf-card-body">
+              <span class="wf-card-tag">Masters</span>
+              <div class="wf-h3">Program ${i}</div>
+              <div class="wf-p">🇦🇺 Australia</div>
+            </div>
+            <div class="wf-card-actions">
+              <div class="wf-card-action">Remove</div>
+              <div class="wf-card-action" style="flex:2;">View →</div>
+            </div>
+          </div>`).join('')}
+        </div>
+
+        <!-- TAB 2: Consultation list (hidden) -->
+        <div style="background:var(--wire-box);border:1.5px dashed var(--wire-border);border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--wire-text);">Consultation — Master of IT</div>
+            <div style="font-size:10px;color:var(--gray-600);">Booked: 15 May 2025 at 10:00 AM</div>
+          </div>
+          <span style="font-size:10px;padding:3px 10px;background:#ECFDF5;border:1px solid #6EE7B7;border-radius:10px;color:#065F46;">Confirmed</span>
+        </div>
+      </div>
+    `
+  },
+
+  // ── 7: AUTH ──────────────────────────────────────────────────────────────
+  {
+    title: 'Sign In / Sign Up',
+    route: '/sign-in  /sign-up',
+    auth: false,
+    html: `
+      <div class="wf-nav">
+        <span class="wf-logo">GLOBALPATH</span>
+        <div class="wf-navlinks"></div>
+        <div class="wf-nav-auth"></div>
+      </div>
+
+      <div style="background:var(--wire-box);padding:28px 32px;min-height:520px;display:flex;align-items:flex-start;justify-content:center;gap:48px;flex-wrap:wrap;">
+
+        <!-- SIGN IN CARD -->
+        <div>
+          <div class="wf-annotation" style="margin-bottom:8px;display:block;">Sign In — /sign-in</div>
+          <div class="wf-auth-card">
+            <div style="text-align:center;margin-bottom:20px;">
+              <div class="wf-h2" style="margin-bottom:4px;">Welcome back</div>
+              <div class="wf-p">Sign in to your GlobalPath account</div>
+            </div>
+            <!-- Social -->
+            <div style="border:1.5px solid var(--wire-border);border-radius:6px;padding:9px;text-align:center;font-size:12px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;background:white;">
+              <div class="wf-img" style="width:16px;height:16px;border-radius:2px;flex-shrink:0;"></div>
+              Continue with Google
+            </div>
+            <div style="border:1.5px solid var(--wire-border);border-radius:6px;padding:9px;text-align:center;font-size:12px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:8px;background:white;">
+              <div class="wf-img" style="width:16px;height:16px;border-radius:2px;flex-shrink:0;"></div>
+              Continue with GitHub
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+              <hr style="flex:1;border:none;border-top:1px solid var(--wire-border);">
+              <span style="font-size:10px;color:var(--gray-400);">or</span>
+              <hr style="flex:1;border:none;border-top:1px solid var(--wire-border);">
+            </div>
+            <div class="wf-form-row">
+              <div class="wf-form-label">Email</div>
+              <div class="wf-form-input">your@email.com</div>
+            </div>
+            <div class="wf-form-row">
+              <div class="wf-form-label">Password</div>
+              <div class="wf-form-input">••••••••</div>
+            </div>
+            <div class="wf-submit" style="margin-top:14px;">Sign In</div>
+            <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--gray-600);">
+              Don't have an account? <strong style="color:var(--wire-dark);">Sign Up</strong>
+            </div>
+          </div>
+          <div class="wf-annotation" style="margin-top:8px;">Hosted Clerk UI — handles JWT + social login</div>
+        </div>
+
+        <!-- SIGN UP CARD -->
+        <div>
+          <div class="wf-annotation" style="margin-bottom:8px;display:block;">Sign Up — /sign-up</div>
+          <div class="wf-auth-card">
+            <div style="text-align:center;margin-bottom:20px;">
+              <div class="wf-h2" style="margin-bottom:4px;">Create account</div>
+              <div class="wf-p">Start exploring IT programmes worldwide</div>
+            </div>
+            ${['First Name','Last Name','Email Address','Password'].map(f=>`
+            <div class="wf-form-row">
+              <div class="wf-form-label">${f}</div>
+              <div class="wf-form-input">${f === 'Password' ? '••••••••' : ''}</div>
+            </div>`).join('')}
+            <div class="wf-submit" style="margin-top:8px;">Create Account</div>
+            <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--gray-600);">
+              Already have an account? <strong style="color:var(--wire-dark);">Sign In</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    `
+  },
+];
+
+let current = 0;
+
+function showPage(i, btn) {
+  current = i;
+  const p = pages[i];
+
+  document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.getElementById('tb-title').textContent = p.title;
+  document.getElementById('tb-route').textContent = p.route;
+
+  const auth = document.getElementById('tb-auth');
+  if (auth) auth.remove();
+  if (p.auth) {
+    const chip = document.createElement('div');
+    chip.id = 'tb-auth';
+    chip.className = 'topbar-auth';
+    chip.textContent = '🔒 Auth Required';
+    document.querySelector('.topbar').appendChild(chip);
+  }
+
+  document.getElementById('wf-frame').innerHTML = p.html;
+}
+
+// init
+document.getElementById('wf-frame').innerHTML = pages[0].html;
+</script>
+</body>
+</html>
